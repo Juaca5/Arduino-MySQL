@@ -9,7 +9,7 @@ cursor = db.cursor() #Opening the cursor to Database
 
 port = '/dev/tty.usbmodem1411'         #Declare the serial port
 print "Connecting...",port             #This confirms the declaration
-arduino = serial.Serial(device, 9600)  #Will read the serial data
+arduino = serial.Serial(port, 9600)  #Will read the serial data
 print "arduino detected"               #Confirms the device
  
 data = arduino.readline()  #Read data from the device
@@ -20,6 +20,7 @@ cursor.execute("INSERT INTO tempdata (voltage) VALUES (%s)", (data))
 #Here initialized value is data, which is used to read device.
 
 db.commit()     #Commit to insert the data
+	
 cursor.close()  #Close the cursor
- 
+	 
 
